@@ -1,4 +1,17 @@
 #!/usr/bin/python3
-def is_kind_of_class(obj, a_class):
-    return (0)
-print(is_kind_of_class(obj, a_class))
+""" 0x0A. Python - Inheritance, task 12 """
+
+
+class MyInt(int):
+    """Custom int type inverting behavior of != and == operators.
+    """
+
+    def __eq__(self, other):
+        """Reverses behavior of == operator.
+        """
+        return int(self) != int(other)
+
+    def __ne__(self, other):
+        """Reverses behavior of != operator.
+        """
+        return int(self) == int(other)

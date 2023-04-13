@@ -1,4 +1,8 @@
 #!/usr/bin/python3
-REPLACE
-    return (0)
-print(REPLACE)
+""" 0x0A. Python - Inheritance, task 5 """
+
+
+class BaseGeometry:
+    """Intentionally empty class.
+    """
+    pass

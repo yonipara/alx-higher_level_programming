@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-"""Rectangle, built for alx project 0x08 task 0.
-"""
+"""Defines a Rectangle class."""
 
 
 class Rectangle:
-    """Empty class per task instructions, will be built upon in later tasks.
-    """
+    """Represent a rectangle."""
     pass

@@ -1,98 +1,89 @@
-class QueenChessBoard:
-    def __init__(self, size):
-        # board has dimensions size x size
-        self.size = size
-        # columns[r] is a number c if a queen is placed at row r and column c.
-        # columns[r] is out of range if no queen is place in row r.
-        # Thus after all queens are placed, they will be at positions
-        # (columns[0], 0), (columns[1], 1), ... (columns[size - 1], size - 1)
-        self.columns = []
- 
-    def place_in_next_row(self, column):
-        self.columns.append(column)
- 
-    def remove_in_current_row(self):
-        return self.columns.pop()
- 
-    def is_this_column_safe_in_next_row(self, column):
-        # index of next row
-        row = len(self.columns)
- 
-        # check column
-        for queen_column in self.columns:
-            if column == queen_column:
-                return False
-        # check diagonal
-        for queen_row, queen_column in enumerate(self.columns):
-            if queen_column - queen_row == column - row:
-                return False
-
-        # check other diagonal
-        for queen_row, queen_column in enumerate(self.columns):
-            if ((self.size - queen_column) - queen_row
-                == (self.size - column) - row):
-                return False
-
-        return True
-
-    def display(self):
-        for row in range(self.size):
-            for column in range(self.size):
-                if column == self.columns[row]:
-                    print('Q', end=' ')
-                else:
-                    print('.', end=' ')
-            print()
-    def solve_queen(size):
-    """Display a chessboard for each possible configuration of placing n queens
-    on an n x n chessboard and print the number of such configurations."""
-    board = QueenChessBoard(size)
-    number_of_solutions = 0
-
-    row = 0
-    column = 0
-    # iterate over rows of board
-    while True:
-        # place queen in next row
-        while column < size:
-            if board.is_this_column_safe_in_next_row(column):
-                board.place_in_next_row(column)
-                row += 1
-                column = 0
-                break
-            else:
-                column += 1
-    # if could not find column to place in or if board is full
-        if (column == size or row == size):
-            # if board is full, we have a solution
-            if row == size:
-                board.display()
-                print()
-                number_of_solutions += 1
-
-                # small optimization:
-                # In a board that already has queens placed in all rows except
-                # the last, we know there can only be at most one position in
-                # the last row where a queen can be placed. In this case, there
-                # is a valid position in the last row. Thus we can backtrack two
-                # times to reach the second last row.
-                board.remove_in_current_row()
-                row -= 1
-
-            # now backtrack
-            try:
-                prev_column = board.remove_in_current_row()
-            except IndexError:
-                # all queens removed
-                # thus no more possible configurations
-                break
-            # try previous row again
-            row -= 1
-            # start checking at column = (1 + value of column in previous row)
-            column = 1 + prev_column
-
-    print('Number of solutions:', number_of_solutions)
+#!/usr/bin/python3
+""" defines a Rectangle class"""
 
 
-n = int(input('Enter n: '))
-solve_queen(n)
+class Rectangle:
+    """Rectangle Class"""
+    number_of_instances = 0
+    print_symbol = '#'
+
+    def __init__(self, width=0, height=0):
+        """ Init Method """
+        self.width = width
+        self.height = height
+        Rectangle.number_of_instances += 1
+
+    @property
+    def width(self):
+        """getter def"""
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """setter def"""
+        if type(value) is not int:
+            raise TypeError('width must be an integer')
+        if value < 0:
+            raise ValueError('width must be >= 0')
+        self.__width = value
+
+    @property
+    def height(self):
+        """getter def"""
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """setter def"""
+        if type(value) is not int:
+            raise TypeError('height must be an integer')
+        if value < 0:
+            raise ValueError('height must be >= 0')
+        self.__height = value
+
+    def area(self):
+        """define area def"""
+        return self.__width * self.__height
+
+    def perimeter(self):
+        """define perimeter def"""
+        if self.__width == 0 or self.__height == 0:
+            return 0
+        return(self.__width * 2) + (self.__height * 2)
+
+    def __str__(self):
+        """define informal print str"""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        else:
+            hsh = str(self.print_symbol)
+            return ((hsh*self.__width + "\n")*self.__height)[:-1]
+
+    def __repr__(self):
+        """define official print repr"""
+        return 'Rectangle({}, {})'.format(self.__width, self.__height)
+
+    def __del__(self):
+        """define delete method"""
+        Rectangle.number_of_instances -= 1
+        print('Bye rectangle...')
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+            Biggest Rectangle (Rectangle)
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        Area1 = rect_1.area()
+        Area2 = rect_2.area()
+        if Area1 >= Area2:
+            return rect_1
+        return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """ Returns a new Rectangle instance """
+        return (cls(size, size))

@@ -7,7 +7,7 @@ def magic_string():
     else:
         magic_string.calls = 1
 
-    return ', '.join(['Holberton'] * magic_string.calls)
+    return ', '.join(['BestSchool'] * magic_string.calls)
 
 # Original solution
 #

@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""0-rectangle, built for alx project 0x08 task 0.
+""" empty class Rectangle that defines a rectangle
 """
+
+
 class Rectangle:
+    """ class rectangle"""
     pass

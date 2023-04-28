@@ -13,4 +13,6 @@ class MyList(list):
         '''fucntion: print_sorted(self)
         returns sorted list
         '''
-        print(sorted(self))
+        copy = self[:]
+        copy.sort()
+        print(copy)

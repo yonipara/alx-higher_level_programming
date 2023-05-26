@@ -3,6 +3,7 @@
 
 
 def uppercase(str):
+    """Print a string in uppercase."""
     for char in str:
         if ord(char) >= 97 and ord(char) <= 122:
             char = ord(char) - 32

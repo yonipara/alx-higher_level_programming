@@ -6,7 +6,7 @@ x = 122
 for i in range(1, 27):
     if x % 2 == 0:
         print("{}".format(chr(x)), end="")
-    if x % 2 != 0:
+    else x % 2 != 0:
         y = x - 32
         print("{}".format(chr(y)), end="")
     x -= 1

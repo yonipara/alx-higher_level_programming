@@ -4,7 +4,10 @@
 
 def max_integer(my_list=[]):
     """Find the biggest integer of a list."""
-    if len(my_list) == 0:
+    if not my_list:
         return None
-    max_int = reduce(lambda a, b: a if a > b else b, my_list)
+    max_int = my_list[0]
+    for i in my_list:
+        if i > max_int:
+            max_int = i
     return max_int

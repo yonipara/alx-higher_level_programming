@@ -5,5 +5,4 @@
 def divisible_by_2(my_list=[]):
     """Find all multiples of 2 in a list."""
     for j in my_list:
-        return list(map(lambda j: True if j % 2 == 0, 
-        else False, my_list)) 
+        return list(map(lambda j: True if j % 2 == 0 else False, my_list)) 

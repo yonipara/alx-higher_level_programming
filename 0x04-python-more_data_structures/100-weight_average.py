@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 def weight_average(my_list=[]):
+    """ calculates the weighted average of all integers tuple """
     if not my_list:
         return 0
 
@@ -11,4 +12,3 @@ def weight_average(my_list=[]):
         den += tup[1]
 
     return (num / den)
-

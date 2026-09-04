@@ -1,6 +1,7 @@
 #!/usr/bin/node
 let arr = [];
 let temp;
+let newTemp;
 for (let i = 0; i < process.argv.length - 2; i++) {
 	arr[i] = process.argv[2 + i] -0;
 }
@@ -12,3 +13,12 @@ for (let i = 2; i < arr.length; i++) {
 	}
 }
 console.log(temp);
+let newArr = arr.filter((n) => n != temp);
+console.log(newArr);
+newTemp = (newArr[0] > newArr[1]) ? newArr[0] : newArr[1];
+for (let i = 2; i < newArr.length; i++) {
+        if (newTemp < newArr[i]) {
+                newTemp = newArr[i];
+        }
+}
+console.log(newTemp);

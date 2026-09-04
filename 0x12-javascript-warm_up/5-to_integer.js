@@ -1,6 +1,6 @@
 #!/usr/bin/node
-if (process.argv[2] - 0) {
-  console.log(`My number: ${Math.trunc(process.argv[2])}`);
-} else {
+if (isNaNprocess.argv[2]) {
   console.log('Not a number');
+} else {
+  console.log(`My number: ${Math.trunc(process.argv[2])}`);
 }

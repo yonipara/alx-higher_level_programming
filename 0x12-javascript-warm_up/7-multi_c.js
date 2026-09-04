@@ -1,5 +1,5 @@
 #!/usr/bin/node
-if (process.argv[2] - 0) {
+if (!isNaN((process.argv[2] - 0)) {
   let i = 0;
   while (i < process.argv[2]) {
     console.log('C is fun');
